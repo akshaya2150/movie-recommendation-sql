@@ -22,6 +22,15 @@ This project is a SQL-based system designed to store and analyze movie data, use
 
 ---
 
+## 📊 Dataset
+
+- Users: contains user details (id, name, age)
+- Movies: stores movie information (title, genre)
+- Ratings: user ratings for movies
+- Watch_History: tracks when users watched movies
+
+---
+
 ## 📂 Project Files
 
 * `schema.sql` → Creates database and tables
