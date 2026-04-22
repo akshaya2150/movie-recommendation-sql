@@ -66,3 +66,18 @@ FROM (
     GROUP BY m.genre, m.title
 ) t
 WHERE rnk = 1;
+
+#8.Top 3 Movies per Genre (Using RANK)
+
+SELECT *
+FROM (
+    SELECT 
+        m.title,
+        m.genre,
+        AVG(r.rating) AS avg_rating,
+        RANK() OVER (PARTITION BY m.genre ORDER BY AVG(r.rating) DESC) AS rank_in_genre
+    FROM Movies m
+    JOIN Ratings r ON m.movie_id = r.movie_id
+    GROUP BY m.movie_id, m.title, m.genre
+) ranked
+WHERE rank_in_genre <= 3;
